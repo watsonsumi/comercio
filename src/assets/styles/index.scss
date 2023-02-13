@@ -1,0 +1,16 @@
+// Basics
+@import './basics/fonts';
+@import './basics/variables';
+@import './basics/general';
+@import './basics/mixins';
+// Layouts
+@import './layout/navBarLayout';
+// Pages
+@import './pages/loginPage';
+@import './pages/homePage';
+@import './pages/solicitudPage';
+// Components
+@import './components/CarritoInterface';
+@import './components/StepperProgress';
+@import './components/CarritoPaso3Ubi';
+@import './components/RegisterTelephone';

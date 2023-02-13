@@ -1,0 +1,86 @@
+.container_NavBar {
+    .navBar_sections {
+        .logoHome {
+            width: 79px;
+            height: 23px;
+            margin-bottom: 54px;
+            margin-left: 16px;
+        }
+        button {
+            gap: 10px;
+            justify-content: start;
+            padding: 15px;
+            margin-bottom: 11px;
+            &:hover {
+                img {
+                    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(303deg) brightness(102%) contrast(100%);
+                }
+            }
+        }
+        a {
+            display: flex;
+            gap: 10px;
+            justify-content: start;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 11px;
+            text-decoration: none;
+            // font-family: $fontPrimary;
+            font-weight: 500;
+            color: rgba(40, 40, 40, 0.8);
+            width: 183px;
+            height: 56px;
+            border-radius: 4px;
+            &:hover {
+                background-color: #dbdfe0;
+                transition: background-color 0.8s;
+            }
+        }
+        a.active {
+            color: white;
+            background-color: #5b99bf;
+            .icons {
+                filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(303deg) brightness(102%) contrast(100%);
+            }
+        }
+    }
+    .footer_navBar {
+        margin-bottom: 54px;
+        .footer_user {
+            display: flex;
+            align-items: center;
+            width: 183px;
+            height: 56px;
+            padding: 8px;
+            background-color: #5b99bf1a;
+            gap: 8px;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            .circle_navBar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                // background-color: #ffffff;
+                border: 2px solid #ffffff;
+            }
+            .name_age {
+                .text {
+                    font-size: 12px;
+                }
+                .text.name {
+                    font-weight: 600;
+                }
+            }
+        }
+        .footer_logout {
+            display: flex;
+            justify-content: flex-end;
+            gap: 13px;
+            cursor: pointer;
+            p {
+                font-weight: 500;
+                color: rgba(40, 40, 40, 0.8);
+            }
+        }
+    }
+}

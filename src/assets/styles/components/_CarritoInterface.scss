@@ -1,0 +1,65 @@
+//TextFields Stepper 2, 3 y 4
+.carrito-container-main {
+	.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
+	.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+		color: rgba(40, 40, 40, 0.5);
+		font-family: 'Avenir';
+		font-weight: 400;
+		font-size: 18px !important;
+	}
+
+	.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+		font-size: 16px !important;
+	}
+
+	.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+		color: #5b99bf !important;
+	}
+
+	.error .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+		color: #a81e1e !important;
+	}
+
+	.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after {
+		border-bottom: 2px solid #5b99bf !important;
+	}
+
+	.error .MuiTextField-root.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after {
+		border-bottom: 2px solid #a81e1e !important;
+	}
+
+	.css-onc0il-MuiInputBase-root-MuiInput-root-MuiSelect-root:after {
+		border-bottom: 2px solid #5b99bf !important;
+	}
+
+	label + .css-1a1fmpi-MuiInputBase-root-MuiInput-root {
+		margin-top: 22px !important;
+	}
+}
+
+// Reusable
+.MuiTypography-root.stepper-title {
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.MuiTypography-root.stepper-description {
+	color: '#070707';
+	font-size: '18px';
+	font-weight: '500';
+	font-family: 'Avenir';
+}
+
+.stepper-line-price {
+	font-family: 'Avenir';
+	justify-content: space-between;
+	font-size: 18px;
+	font-weight: 500;
+	margin-top: 16px;
+	color: rgba(40, 40, 40, 0.7);
+
+	&.bold {
+		font-weight: 800;
+		color: '#282828';
+	}
+}

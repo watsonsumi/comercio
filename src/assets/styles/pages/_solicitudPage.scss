@@ -1,0 +1,12 @@
+.container_solicitud {
+    overflow-y: hidden;
+    display: inline;
+    .form {
+        width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // flex-direction: column;
+        // flex-wrap: nowrap;
+        align-items: center;
+    }
+}

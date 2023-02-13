@@ -1,0 +1,41 @@
+.modal_map {
+	.MuiDialog-paper {
+		max-width: 1006px;
+		width: 100%;
+	}
+	.header_current_address {
+		display: flex;
+		margin: 20px 0px 20px 20px;
+		gap: 80%;
+
+		.title_current_address {
+			font-weight: 600;
+		}
+
+		.close_map:hover {
+			cursor: pointer;
+		}
+	}
+
+	.search_address {
+		margin-left: 30%;
+		margin-top: 12px;
+		margin-bottom: 5px;
+	}
+
+	.confirm_address {
+		margin-left: 45%;
+
+		.confirm_button {
+			background-color: black;
+			color: white;
+			margin-bottom: 20px;
+			text-transform: none;
+		}
+	}
+
+	.confirm_button:hover {
+		color: white;
+		background-color: green	;
+	}
+}

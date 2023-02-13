@@ -1,0 +1,96 @@
+.linear-progress {
+	padding: 60px 0 30px 0;
+
+	.linear-progress__steep.active {
+		font-weight: 700;
+	}
+
+	&__item {
+		&:first-child {
+			transform: translateX(-25%);
+			font-weight: 500;
+		}
+
+		&.active {
+			font-weight: 700;
+
+			transition: background-color 0.3s;
+		}
+	}
+
+	&__steep {
+		font-family: 'Roboto', sans-serif;
+		transform: translateY(-50%);
+		padding: 10px 15px;
+		border-radius: 50%;
+		font-weight: 400;
+		transition: all 0.3s;
+	}
+}
+
+.linear-blue.linear-progress {
+	background-color: #eff5f9;
+
+	.linear-progress__steep {
+		background-color: #dfebf1;
+
+		&.active {
+			background-color: #5b99bf;
+			color: #fff;
+		}
+	}
+
+	.MuiLinearProgress-colorPrimary {
+		background-color: #dfebf1;
+	}
+
+	.MuiLinearProgress-barColorPrimary {
+		background-color: #5b99bf;
+	}
+}
+
+.linear-green.linear-progress {
+	background-color: transparent;
+
+	.linear-progress__container {
+		margin: 0;
+	}
+
+	.linear-progress__item {
+		&:nth-child(1) {
+			transform: translateX(1%);
+		}
+
+		&:nth-child(2) {
+			transform: translateX(-25%);
+		}
+
+		&:nth-child(3) {
+			transform: translateX(45%);
+		}
+	}
+
+	.linear-progress__steep {
+		background-color: #e7e7e7;
+
+		&.active {
+			background-color: #e6f8ef;
+			color: rgb(70, 197, 134);
+			box-shadow: inset 0 0 0 2px rgb(70, 197, 134);
+		}
+	}
+
+	.MuiLinearProgress-colorPrimary {
+		background-color: #e7e7e7;
+	}
+
+	.MuiLinearProgress-barColorPrimary {
+		background-color: rgb(70, 197, 134);
+	}
+}
+
+.linear-inicio.linear-progress {
+	.linear-progress__item {
+		max-width: 30px;
+	}
+}
