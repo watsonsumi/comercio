@@ -28,7 +28,7 @@ import { logout } from '../redux/actions/loginActions';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Demo © "}
+      {"SComercio © "}
       {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
       </Link>{" "} */}
@@ -167,7 +167,7 @@ export default function Header() {
             noWrap
             className={classes.title}
           >
-            Demo
+            Comercio
           </Typography>
           <IconButton color="inherit">
             {/* <Badge badgeContent={4} color="secondary"> */}

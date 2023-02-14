@@ -3,9 +3,7 @@ import {
 	Button,
 	Grid,
 	Typography,
-	FormControl,
-	InputLabel,
-	CardContent, Box
+	CardContent
   } from "@mui/material";
 import React, { useEffect, useState } from "react";
   import CustomInput from "../../components/Icons/CustomInput";
@@ -19,117 +17,46 @@ import React, { useEffect, useState } from "react";
   import TablePagination from "@material-ui/core/TablePagination";
   import TableRow from "@material-ui/core/TableRow";
   import axios from 'axios';
-  import { useSelector } from "react-redux";
   const columns = [
-    { id: "name", label: "Nombre depositante", minWidth: 170 },
-    { id: "code", label: "Fecha", minWidth: 100 },
     {
-      id: "population",
-      label: "Hora",
+      id: "nombre_depositante",
+      label: "Nombre depositante",
+      minWidth: 170,
+      align: "right",
+      format: value => value.toLocaleString()
+    },
+    { id: "celular", 
+      label: "Telefono", 
+      minWidth: 170 , 
+      format: value => value.toLocaleString()},
+    {
+      id: "fecha_hora",
+      label: "Fecha",
       minWidth: 170,
       align: "right",
       format: value => value.toLocaleString()
     },
     {
-      id: "size",
+      id: "monto",
       label: "Monto",
       minWidth: 170,
       align: "right",
       format: value => value.toLocaleString()
-    },
-    {
-      id: "density",
-      label: "Celular",
-      minWidth: 170,
-      align: "right",
-      format: value => value.toFixed(2)
     }
   ];
   
-  function createData(name, code, population, size) {
-    const density = population / size;
-    return { name, code, population, size, density };
+  
+  function createData(nombre_depositante, celular, fecha_hora, monto) {
+    const myDate = new Date(fecha_hora);
+    const fecha = myDate.toLocaleDateString(); 
+    console.log(myDate)
+    // let day = myDate.getDate();
+    // let month = myDate.getMonth() + 1;
+    // let year = myDate.getFullYear();
+    // let fecha =`${day}-0${month}-${year}`;
+    return { nombre_depositante, celular, fecha, monto };
   }
-  
-  const countries = [
-    {
-      name: "India",
-      code: "IN",
-      population: 1324171354,
-      size: 3287263
-    },
-    {
-      name: "China",
-      code: "CN",
-      population: 1403500365,
-      size: 9596961
-    },
-    {
-      name: "Italy",
-      code: "IT",
-      population: 60483973,
-      size: 301340
-    },
-    {
-      name: "India",
-      code: "IN2",
-      population: 1324171354,
-      size: 3287263
-    },
-    {
-      name: "China",
-      code: "CN2",
-      population: 1403500365,
-      size: 9596961
-    },
-    {
-      name: "Italy",
-      code: "IT2",
-      population: 60483973,
-      size: 301340
-    },
-    {
-      name: "India",
-      code: "IN3",
-      population: 1324171354,
-      size: 3287263
-    },
-    {
-      name: "China",
-      code: "CN3",
-      population: 1403500365,
-      size: 9596961
-    },
-    {
-      name: "Italy",
-      code: "IT3",
-      population: 60483973,
-      size: 301340
-    },
-    {
-      name: "India",
-      code: "IN4",
-      population: 1324171354,
-      size: 3287263
-    },
-    {
-      name: "China",
-      code: "CN4",
-      population: 1403500365,
-      size: 9596961
-    },
-    {
-      name: "Italy",
-      code: "IT4",
-      population: 60483973,
-      size: 301340
-    }
-  ];
-  
-  const rows = countries.map(item =>
-    createData(item.name, item.code, item.population, item.size)
-  );
-  console.log(rows);
+ 
   const useStyles = makeStyles({
     root: {
       width: "100%"
@@ -146,21 +73,24 @@ const ListPage = () => {
     fecha: '',
     nrCelular:''
     })
+  const [tabla, setTabla]=useState([])
   const token = localStorage.getItem('Token');
   console.log(token);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
+  // 
   const handleChangeRowsPerPage = event => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   const handleChange = (e) => {
     console.log(e.currentTarget.id);
     console.log(e.currentTarget.value);
     setValues({ ...values, [e.currentTarget.id]: e.currentTarget.value });
   };
+  let lid= '';
   const handleSubmit = async (e) => {
     console.log('aqui');
 		e.preventDefault();
@@ -172,17 +102,20 @@ const ListPage = () => {
               "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
               }
             }
-        await axios.get(`https://m0uez7vsl1.execute-api.us-east-1.amazonaws.com/test/984534564/2013-01-29`, config)
+        await axios.get(`https://m0uez7vsl1.execute-api.us-east-1.amazonaws.com/test/`+values.nrCelular+`/`+values.fecha)
         .then(res => {
-          const data = res.body;
+          const data = res.data.body;
           console.log(data);
-          // setValues({ persons });
+        setTabla( data.map(item =>  
+          createData(item.nombre_depositante, item.celular, item.fecha_hora, item.monto)
+          ))
         })
 } catch (e) {
   console.log(e);
 }
   }
   // https://m0uez7vsl1.execute-api.us-east-1.amazonaws.com/test/984534564/2013-01-29
+
 	return (
 		<Container
 			disableGutters={true}
@@ -278,8 +211,7 @@ const ListPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            {tabla.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(row => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
@@ -302,7 +234,7 @@ const ListPage = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 15, 20, 25, 50, 100]}
         component="div"
-        count={rows.length}
+        count={tabla.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
