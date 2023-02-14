@@ -29,6 +29,10 @@ import React, { useEffect, useState } from "react";
       label: "Telefono", 
       minWidth: 170 , 
       format: value => value.toLocaleString()},
+      { id: "id_equipo", 
+        label: "Id equipo", 
+        minWidth: 170 , 
+        format: value => value.toLocaleString()},
     {
       id: "fecha_hora",
       label: "Fecha",
@@ -46,15 +50,21 @@ import React, { useEffect, useState } from "react";
   ];
   
   
-  function createData(nombre_depositante, celular, fecha_hora, monto) {
+  function createData(nombre_depositante, celular, id_equipo, fecha_hora, monto) {
+    console.log(fecha_hora);
     const myDate = new Date(fecha_hora);
-    const fecha = myDate.toLocaleDateString(); 
+    // const fecha = myDate.toLocaleDateString(); 
+    // const formattedDate = myDate.toLocaleDateString("en-GB", {
+    //   day: "numeric",
+    //   month: "long",
+    //   year: "numeric"
+    // })
     console.log(myDate)
     // let day = myDate.getDate();
     // let month = myDate.getMonth() + 1;
     // let year = myDate.getFullYear();
     // let fecha =`${day}-0${month}-${year}`;
-    return { nombre_depositante, celular, fecha, monto };
+    return { nombre_depositante, celular, id_equipo, fecha_hora, monto };
   }
  
   const useStyles = makeStyles({
@@ -106,9 +116,9 @@ const ListPage = () => {
         .then(res => {
           const data = res.data.body;
           console.log(data);
-        setTabla( data.map(item =>  
-          createData(item.nombre_depositante, item.celular, item.fecha_hora, item.monto)
-          ))
+        setTabla( data.map(item => 
+          createData(item.nombre_depositante, item.celular, item.id_equipo, item.fecha_hora,  item.monto)
+        ))
         })
 } catch (e) {
   console.log(e);
@@ -175,11 +185,13 @@ const ListPage = () => {
                   handleChange={handleChange}
                 />
                <Button
-            fullWidth
+            // fullWidth
             onClick={handleSubmit} 
             sx={{
               // fontSize: "32px",
-              fontWeight: "500",
+              // fontWeight: "100",
+              height: '56px',
+              width: '10%',
               color: "rgba(40, 40, 40, 0.8)",
               textAlign: "center",
               background: 'black',
@@ -192,7 +204,7 @@ const ListPage = () => {
           </Button>
             </Grid>
           </CardContent>
-          <h3> Lista Usuarios</h3>
+          <h3> Transacciones</h3>
         </Typography>
         <Paper className={classes.root}>
       <TableContainer className={classes.container}>
